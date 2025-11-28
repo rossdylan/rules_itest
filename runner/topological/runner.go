@@ -2,6 +2,7 @@ package topological
 
 import (
 	"context"
+	"fmt"
 	"runtime"
 	"slices"
 	"sync"
@@ -170,6 +171,7 @@ func (ts *runner) setErr(err error) {
 func (ts *runner) markDone(task Task) {
 	// Mark this task as done and let other workers know.
 	ts.completed[task.Key()] = struct{}{}
+	fmt.Printf("TASK DONE: %s\n", task.Key())
 	// We do not have a reverse dependency map so just wake all the workers. It
 	// would only give an upper bound on the number of workers to wake anyway.
 	ts.cv.Broadcast()

@@ -204,11 +204,14 @@ func (s *ServiceInstance) Stop() error {
 	switch s.ShutdownSignal {
 	case "SIGKILL":
 		signal = syscall.SIGKILL
+		log.Printf("SIGKILL -> %s", s.Exe)
 	case "SIGTERM":
 		signal = syscall.SIGTERM
+		log.Printf("SIGTERM -> %s", s.Exe)
 	default:
 		// Default to SIGKILL if unspecified or unrecognized. In case we add new values to itest.bzl but forget to add it here
 		signal = syscall.SIGKILL
+		log.Printf("SIGKILL (default) -> %s", s.Exe)
 	}
 
 	return s.StopWithSignal(signal)
