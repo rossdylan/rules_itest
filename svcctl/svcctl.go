@@ -121,6 +121,7 @@ func handleKill(ctx context.Context, r *runner.Runner, _ chan error, w http.Resp
 		return
 	}
 
+	log.Printf("HANDLE KILL\n")
 	// Currently only SIGTERM and SIGKILL are supported.
 	switch signal {
 	case "":

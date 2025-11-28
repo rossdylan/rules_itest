@@ -4,6 +4,7 @@ package runner
 
 import (
 	"fmt"
+	"log"
 	"os/exec"
 	"syscall"
 )
@@ -23,6 +24,7 @@ func setPgid(cmd *exec.Cmd) {
 }
 
 func killGroup(cmd *exec.Cmd, sig syscall.Signal) error {
+	log.Printf("killGroup %s\n", cmd.Path)
 	pid := cmd.Process.Pid
 	if shouldUseProcessGroups {
 		pid = -pid

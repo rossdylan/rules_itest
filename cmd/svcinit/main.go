@@ -156,6 +156,7 @@ func main() {
 	go func() {
 		count := 0
 		for range signalCh {
+			log.Printf("SVCINIT SIGNAL RECEIVED")
 			if count == 0 {
 				log.Println("Shutdown requested, exiting gracefully. Press Ctrl-C again to force exit")
 				cancelFunc()

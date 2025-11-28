@@ -227,6 +227,7 @@ func isGone(err error) bool {
 }
 
 func (s *ServiceInstance) StopWithSignal(signal syscall.Signal) error {
+	log.Printf("STOPPING %s\n", s.Exe)
 	if s.cmd.Process == nil {
 		return nil
 	}
