@@ -103,6 +103,7 @@ func main() {
 		// and works the same way across `bazel run` and `bazel test`
 		os.Setenv("TMPDIR", tmpDir)
 	}
+	log.Printf("%s, terse:%t, keep:%t\n", tmpDir, terseOutput, shouldKeepServicesUp)
 
 	getAssignedPortBinPath, err := runfiles.Rlocation(getAssignedPortRlocationPath)
 	must(err)
